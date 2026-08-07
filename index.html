@@ -4,23 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32*32" href="./assets/agrofert_icon-32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/agrofert_icon-32.png">
+    <meta name="description" content="أجروفيرت للتنمية الزراعية والأسمدة - مغذيات وأسمدة زراعية عالية الجودة لتحقيق الأمن الغذائي العالمي والتنمية المستدامة.">
     <meta property="og:title" content="أجروفيرت | تنمية زراعة المستقبل">
-    <meta property="og:type" content="Agrofert website">
-    <meta property="og:image" content="https://i.ibb.co/B5NJS4Pv/agrofert-630.png">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/agrofert-630.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:description"
-        content="مغذيات وأسمدة زراعية عالية الجودة لتحقيق الأمن الغذائي العالمي والتنمية المستدامة">
+    <meta property="og:description" content="مغذيات وأسمدة زراعية عالية الجودة لتحقيق الأمن الغذائي العالمي والتنمية المستدامة">
     <meta property="og:site_name" content="أجروفيرت للتنمية الزراعية والاسمدة">
 
     <title>أجروفيرت | تنمية زراعة المستقبل</title>
+    
+    <!-- Preload Hero Image -->
+    <link rel="preload" as="image" href="assets/hero.png">
+    
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -34,12 +36,17 @@
                 <a href="./index.html" class="logo">
                     <i class="fas fa-leaf"></i> Agro<span>fert</span>
                 </a>
+                <button class="menu-toggle" aria-label="قائمة التنقل" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <div class="nav-links">
-                    <a href="./index.html">الرئيسية</a>
+                    <a href="./index.html" class="active">الرئيسية</a>
                     <a href="products.html">المنتجات</a>
                     <a href="about.html">عنا</a>
                     <a href="support.html">الدعم</a>
-                    <a href="#contact" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">الاتصال</a>
+                    <a href="about.html#contact" class="btn btn-primary btn-nav">الاتصال</a>
                 </div>
             </nav>
         </div>
@@ -47,7 +54,7 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <img src="assets/hero.png" alt="Lush green fields" class="hero-bg">
+        <img src="assets/hero.png" alt="حقوق خضراء يانعة" class="hero-bg">
         <div class="hero-overlay"></div>
         <div class="container hero-content">
             <h1>حلول مبتكرة وتنمية مستقبل الزراعة</h1>
@@ -60,9 +67,8 @@
     </section>
 
     <!-- Vision & Philosophy -->
-    <section class="section-padding vision" style="position: relative;">
-        <canvas id="particles-canvas"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.6;"></canvas>
+    <section class="section-padding vision">
+        <canvas id="particles-canvas"></canvas>
         <div class="container">
             <div class="vision-grid">
                 <div class="vision-text">
@@ -75,22 +81,22 @@
                         <div class="value-item">
                             <i class="fas fa-leaf value-icon"></i>
                             <h3>الاستدامة</h3>
-                            <p style="font-size: 0.9rem;">مركبات صديقة للبيئة</p>
+                            <p>مركبات صديقة للبيئة</p>
                         </div>
                         <div class="value-item">
                             <i class="fas fa-flask value-icon"></i>
                             <h3>الجودة</h3>
-                            <p style="font-size: 0.9rem;">معايير معتمدة على ISO</p>
+                            <p>معايير معتمدة على ISO</p>
                         </div>
                         <div class="value-item">
                             <i class="fas fa-microscope value-icon"></i>
                             <h3>الابتكار</h3>
-                            <p style="font-size: 0.9rem;">حلول مدفوعة بالبحث والتطوير</p>
+                            <p>حلول مدفوعة بالبحث والتطوير</p>
                         </div>
                     </div>
                 </div>
                 <div class="vision-img-container">
-                    <img src="assets/vision.png" alt="Abstract leaf structure" class="vision-img">
+                    <img src="assets/vision.png" alt="تركيب نباتي استثنائي" class="vision-img" loading="lazy">
                 </div>
             </div>
         </div>
@@ -107,7 +113,7 @@
             <div class="product-carousel">
                 <!-- Product 1 -->
                 <div class="product-card">
-                    <img src="assets/product_liquid.png" alt="Liquid Fertilizer" class="product-img">
+                    <img src="assets/product_liquid.png" alt="سماد سائل" class="product-img" loading="lazy">
                     <div class="product-info">
                         <div class="product-badges">
                             <span class="badge">سائل</span>
@@ -115,14 +121,13 @@
                         </div>
                         <h3 class="product-title">AgroGold Liquid</h3>
                         <p class="mb-sm">سماد ورقي عالي الجودة لامتصاص سريع.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.8rem;">تفاصيل
-                            المنتج</a>
+                        <a href="products.html" class="btn btn-outline btn-sm">تفاصيل المنتج</a>
                     </div>
                 </div>
 
                 <!-- Product 2 -->
                 <div class="product-card">
-                    <img src="assets/product_granular.png" alt="Granular Fertilizer" class="product-img">
+                    <img src="assets/product_granular.png" alt="سماد محبب" class="product-img" loading="lazy">
                     <div class="product-info">
                         <div class="product-badges">
                             <span class="badge">محبب</span>
@@ -130,14 +135,13 @@
                         </div>
                         <h3 class="product-title">Emerald Grow</h3>
                         <p class="mb-sm">مركب NPK متوازن لتطبيقه في التربة.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.8rem;">تفاصيل
-                            المنتج</a>
+                        <a href="products.html" class="btn btn-outline btn-sm">تفاصيل المنتج</a>
                     </div>
                 </div>
 
-                <!-- Product 3 (Placeholder reuse for demo) -->
+                <!-- Product 3 -->
                 <div class="product-card">
-                    <img src="assets/product_liquid.png" alt="Bio Stimulant" class="product-img">
+                    <img src="assets/product_liquid.png" alt="محفز حيوي" class="product-img" loading="lazy">
                     <div class="product-info">
                         <div class="product-badges">
                             <span class="badge">عضوي</span>
@@ -145,13 +149,12 @@
                         </div>
                         <h3 class="product-title">BioVital Boost</h3>
                         <p class="mb-sm">محفز حيوي عضوي لمقاومة الإجهاد.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.8rem;">تفاصيل
-                            المنتج</a>
+                        <a href="products.html" class="btn btn-outline btn-sm">تفاصيل المنتج</a>
                     </div>
                 </div>
-                <!-- Product 4 (Placeholder reuse for demo) -->
+                <!-- Product 4 -->
                 <div class="product-card">
-                    <img src="assets/product_granular.png" alt="Soil Conditioner" class="product-img">
+                    <img src="assets/product_granular.png" alt="محسن التربة" class="product-img" loading="lazy">
                     <div class="product-info">
                         <div class="product-badges">
                             <span class="badge">ناعم</span>
@@ -159,8 +162,7 @@
                         </div>
                         <h3 class="product-title">TerraFix Pro</h3>
                         <p class="mb-sm">مُحسِّن مُتقدم للتربة ومُوازن لدرجة الحموضة.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.8rem;">تفاصيل
-                            المنتج</a>
+                        <a href="products.html" class="btn btn-outline btn-sm">تفاصيل المنتج</a>
                     </div>
                 </div>
             </div>
@@ -191,8 +193,7 @@
             </div>
         </div>
         <div class="container text-center">
-            <p style="max-width: 600px; margin: 0 auto; opacity: 0.8;">نموٌّ متواصل وقيمة سوقية عالية. نحن ملتزمون
-                بتحقيق عوائد مجزية لمستثمرينا وجودة عالية لمزارعينا.</p>
+            <p class="trust-statement">نموٌّ متواصل وقيمة سوقية عالية. نحن ملتزمون بتحقيق عوائد مجزية لمستثمرينا وجودة عالية لمزارعينا.</p>
         </div>
     </section>
 
@@ -204,12 +205,11 @@
                     <a href="#" class="logo mb-sm">
                         <i class="fas fa-leaf"></i> Agro<span>fert</span>
                     </a>
-                    <p style="font-size: 0.9rem; opacity: 0.8;">تنمية زراعية حديثة من خلال العلم والاستدامة. أجروفيرت
-                        شريككم في النمو.</p>
+                    <p class="footer-tagline">تنمية زراعية حديثة من خلال العلم والاستدامة. أجروفيرت شريككم في النمو.</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -217,28 +217,22 @@
                     <ul class="footer-links">
                         <li><a href="products.html">المنتجات</a></li>
                         <li><a href="about.html">عنا</a></li>
-                        <li><a href="#">شركاؤنا</a></li>
                         <li><a href="support.html">الدعم والمسئولية</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>قانوني</h4>
                     <ul class="footer-links">
-                        <li><a href="#">سياسة الخصوصية</a></li>
-                        <li><a href="#">شروط الاستخدام</a></li>
-                        <li><a href="#">سياسة ملفات تعريف الارتباط</a></li>
+                        <li><a href="support.html">سياسة الخصوصية</a></li>
+                        <li><a href="support.html">شروط الاستخدام</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>النشرة الاخبارية</h4>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">اشترك للحصول على تحديثات السوق
-                        ونصائح زراعية.</p>
-                    <form style="display: flex;">
-                        <input id="input-email" type="email" placeholder="بريدك الإلكتروني"
-                            style="padding: 10px; border: none; width: 100%; border-radius: 2px 0 0 2px;">
-                        <button type="submit" class="btn-primary"
-                            style="padding: 10px 15px; border-radius: 0 2px 2px 0;"><i
-                                class="fas fa-paper-plane"></i></button>
+                    <p class="newsletter-text">اشترك للحصول على تحديثات السوق ونصائح زراعية.</p>
+                    <form class="newsletter-form">
+                        <input id="input-email" type="email" placeholder="بريدك الإلكتروني" class="newsletter-input">
+                        <button type="submit" class="btn-primary newsletter-btn" aria-label="اشتراك"><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
                 <div class="language footer-bottom">
@@ -251,16 +245,16 @@
                 <br>
                 <p class="text-sm mb-6 text-gray-400">
                     Powered By
-                    <a id="powered" target="_blank" rel="noopener noreferrer"
-                        href="https://pioneercode1.github.io/pioneercode/">
+                    <a id="powered" target="_blank" rel="noopener noreferrer" href="https://pioneercode1.github.io/pioneercode/">
                         Pioneercode
                     </a>
                 </p>
             </div>
-            </section>
+        </div>
+    </footer>
 
-            <script src="js/main.js"></script>
-            <script src="js/particles.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
 </body>
 
 </html>

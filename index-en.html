@@ -4,23 +4,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32*32" href="./assets/agrofert_icon-32.png">
-    <meta property="og:title" content="Agrofert">
-    <meta property="og:type" content="Agrofert website">
-    <meta property="og:image" content="https://i.ibb.co/B5NJS4Pv/agrofert-630.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/agrofert_icon-32.png">
+    <meta name="description" content="Agrofert Chemical Industries - Premium agricultural nutrients and chemical solutions for sustainable global food security.">
+    <meta property="og:title" content="Agrofert | Cultivating the Future">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/agrofert-630.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:description"
-        content="Premium agricultural nutrients and chemical solutions for sustainable global food security.">
+    <meta property="og:description" content="Premium agricultural nutrients and chemical solutions for sustainable global food security.">
     <meta property="og:site_name" content="Agrofert">
 
     <title>Agrofert | Cultivating the Future</title>
+    
+    <!-- Preload Hero Image -->
+    <link rel="preload" as="image" href="assets/hero.png">
+    
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
@@ -34,12 +36,17 @@
                 <a href="./index-en.html" class="logo">
                     <i class="fas fa-leaf"></i> Agro<span>fert</span>
                 </a>
+                <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <div class="nav-links">
-                    <a href="./index-en.html">Home</a>
+                    <a href="./index-en.html" class="active">Home</a>
                     <a href="./products-en.html">Products</a>
                     <a href="./about-en.html">About Us</a>
                     <a href="./support-en.html">Support</a>
-                    <a href="#contact" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">Contact</a>
+                    <a href="./about-en.html#contact" class="btn btn-primary btn-nav">Contact</a>
                 </div>
             </nav>
         </div>
@@ -60,9 +67,8 @@
     </section>
 
     <!-- Vision & Philosophy -->
-    <section class="section-padding vision" style="position: relative;">
-        <canvas id="particles-canvas"
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.6;"></canvas>
+    <section class="section-padding vision">
+        <canvas id="particles-canvas"></canvas>
         <div class="container">
             <div class="vision-grid">
                 <div class="vision-text">
@@ -76,22 +82,22 @@
                         <div class="value-item">
                             <i class="fas fa-leaf value-icon"></i>
                             <h3>Sustainability</h3>
-                            <p style="font-size: 0.9rem;">Eco-friendly formulations</p>
+                            <p>Eco-friendly formulations</p>
                         </div>
                         <div class="value-item">
                             <i class="fas fa-flask value-icon"></i>
                             <h3>Quality</h3>
-                            <p style="font-size: 0.9rem;">ISO Certified Standards</p>
+                            <p>ISO Certified Standards</p>
                         </div>
                         <div class="value-item">
                             <i class="fas fa-microscope value-icon"></i>
                             <h3>Innovation</h3>
-                            <p style="font-size: 0.9rem;">R&D Driven Solutions</p>
+                            <p>R&D Driven Solutions</p>
                         </div>
                     </div>
                 </div>
                 <div class="vision-img-container">
-                    <img src="assets/vision.png" alt="Abstract leaf structure" class="vision-img">
+                    <img src="assets/vision.png" alt="Abstract leaf structure" class="vision-img" loading="lazy">
                 </div>
             </div>
         </div>
@@ -108,7 +114,7 @@
             <div class="product-carousel">
                 <!-- Product 1 -->
                 <div class="product-card">
-                    <img src="assets/product_liquid.png" alt="Liquid Fertilizer" class="product-img">
+                    <img src="assets/product_liquid.png" alt="Liquid Fertilizer" class="product-img" loading="lazy">
                     <div class="product-info">
                         <div class="product-badges">
                             <span class="badge">Liquid</span>
@@ -116,14 +122,13 @@
                         </div>
                         <h3 class="product-title">AgroGold Liquid</h3>
                         <p class="mb-sm">Premium foliar fertilizer for rapid absorption.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.8rem;">View
-                            Details</a>
+                        <a href="./products-en.html" class="btn btn-outline btn-sm">View Details</a>
                     </div>
                 </div>
 
                 <!-- Product 2 -->
                 <div class="product-card">
-                    <img src="assets/product_granular.png" alt="Granular Fertilizer" class="product-img">
+                    <img src="assets/product_granular.png" alt="Granular Fertilizer" class="product-img" loading="lazy">
                     <div class="product-info">
                         <div class="product-badges">
                             <span class="badge">Granular</span>
@@ -131,14 +136,13 @@
                         </div>
                         <h3 class="product-title">Emerald Grow</h3>
                         <p class="mb-sm">Balanced NPK complex for soil application.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.8rem;">View
-                            Details</a>
+                        <a href="./products-en.html" class="btn btn-outline btn-sm">View Details</a>
                     </div>
                 </div>
 
-                <!-- Product 3 (Placeholder reuse for demo) -->
+                <!-- Product 3 -->
                 <div class="product-card">
-                    <img src="assets/product_liquid.png" alt="Bio Stimulant" class="product-img">
+                    <img src="assets/product_liquid.png" alt="Bio Stimulant" class="product-img" loading="lazy">
                     <div class="product-info">
                         <div class="product-badges">
                             <span class="badge">Organic</span>
@@ -146,13 +150,12 @@
                         </div>
                         <h3 class="product-title">BioVital Boost</h3>
                         <p class="mb-sm">Organic biostimulant for stress resistance.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.8rem;">View
-                            Details</a>
+                        <a href="./products-en.html" class="btn btn-outline btn-sm">View Details</a>
                     </div>
                 </div>
-                <!-- Product 4 (Placeholder reuse for demo) -->
+                <!-- Product 4 -->
                 <div class="product-card">
-                    <img src="assets/product_granular.png" alt="Soil Conditioner" class="product-img">
+                    <img src="assets/product_granular.png" alt="Soil Conditioner" class="product-img" loading="lazy">
                     <div class="product-info">
                         <div class="product-badges">
                             <span class="badge">Soil</span>
@@ -160,8 +163,7 @@
                         </div>
                         <h3 class="product-title">TerraFix Pro</h3>
                         <p class="mb-sm">Advanced soil conditioner and pH balancer.</p>
-                        <a href="#" class="btn btn-outline" style="padding: 8px 20px; font-size: 0.8rem;">View
-                            Details</a>
+                        <a href="./products-en.html" class="btn btn-outline btn-sm">View Details</a>
                     </div>
                 </div>
             </div>
@@ -191,8 +193,7 @@
             </div>
         </div>
         <div class="container text-center">
-            <p style="max-width: 600px; margin: 0 auto; opacity: 0.8;">Consistent growth and market value. We are
-                committed to delivering returns for our investors and quality for our farmers.</p>
+            <p class="trust-statement">Consistent growth and market value. We are committed to delivering returns for our investors and quality for our farmers.</p>
         </div>
     </section>
 
@@ -204,12 +205,11 @@
                     <a href="#" class="logo mb-sm">
                         <i class="fas fa-leaf"></i> Agro<span>fert</span>
                     </a>
-                    <p style="font-size: 0.9rem; opacity: 0.8;">Empowering agriculture through science and
-                        sustainability. Your partner in growth.</p>
+                    <p class="footer-tagline">Empowering agriculture through science and sustainability. Your partner in growth.</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -224,22 +224,17 @@
                     <h4>Legal</h4>
                     <ul class="footer-links">
                         <li><a href="./support-en.html">Privacy Policy & Terms of Use</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>Newsletter</h4>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">Subscribe for market updates and
-                        agricultural tips.</p>
-                    <form style="display: flex;">
-                        <input type="email" placeholder="Your Email"
-                            style="padding: 10px; border: none; width: 100%; border-radius: 2px 0 0 2px;">
-                        <button type="submit" class="btn-primary"
-                            style="padding: 10px 15px; border-radius: 0 2px 2px 0;"><i
-                                class="fas fa-paper-plane"></i></button>
+                    <p class="newsletter-text">Subscribe for market updates and agricultural tips.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input">
+                        <button type="submit" class="btn-primary newsletter-btn" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
-                <div class="language">
+                <div class="language footer-bottom">
                     <a href="./index.html">ع</a>
                     <a href="./index-en.html">en</a>
                 </div>
@@ -249,16 +244,16 @@
                 <br>
                 <p class="text-sm mb-6 text-gray-400">
                     Powered By
-                    <a id="powered" target="_blank" rel="noopener noreferrer"
-                        href="https://pioneercode1.github.io/pioneercode/">
+                    <a id="powered" target="_blank" rel="noopener noreferrer" href="https://pioneercode1.github.io/pioneercode/">
                         Pioneercode
                     </a>
                 </p>
             </div>
-            </section>
+        </div>
+    </footer>
 
-            <script src="js/main.js"></script>
-            <script src="js/particles.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/particles.js"></script>
 </body>
 
 </html>

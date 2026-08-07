@@ -4,26 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32*32" href="./assets/agrofert_icon-32.png">
-    <meta property="og:title" content="Agrofert">
-    <meta property="og:type" content="Agrofert website">
-    <meta property="og:image" content="https://i.ibb.co/B5NJS4Pv/agrofert-630.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/agrofert_icon-32.png">
+    <meta name="description" content="عن أجروفيرت للتنمية الزراعية والأسمدة - تاريخنا، قيادتنا، ومعالم التميز في مجال التغذية النباتية والحلول الزراعية.">
+    <meta property="og:title" content="أجروفيرت | معلومات عن الشركة وروابط الاتصال">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/agrofert-630.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:description" content="A Agrofert">
-    <meta property="og:site_name" content="Agrofert">
+    <meta property="og:description" content="من المختبر إلى الميدان - إرث من الابتكار والنمو المستدام في أجروفيرت.">
+    <meta property="og:site_name" content="أجروفيرت">
     <title>أجروفيرت | معلومات عن الشركة وروابط الاتصال</title>
+    
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Email js -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 </head>
 
 <body>
@@ -35,12 +32,17 @@
                 <a href="./index.html" class="logo">
                     <i class="fas fa-leaf"></i> Agro<span>fert</span>
                 </a>
+                <button class="menu-toggle" aria-label="قائمة التنقل" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <div class="nav-links">
                     <a href="./index.html">الرئيسية</a>
                     <a href="./products.html">المنتجات</a>
-                    <a href="./about.html" class="active" style="color: var(--color-emerald);">عنا</a>
+                    <a href="./about.html" class="active">عنا</a>
                     <a href="./support.html">الدعم</a>
-                    <a href="#contact" class="btn btn-primary" style="padding: 8px 20px; font-size: 0.8rem;">الاتصال</a>
+                    <a href="#contact" class="btn btn-primary btn-nav">الاتصال</a>
                 </div>
             </nav>
         </div>
@@ -50,47 +52,114 @@
     <div class="page-header">
         <div class="container">
             <h1>من المختبر إلى الميدان</h1>
-            <p>إرث من الابتكار والنمو المستدام</p>
+            <p>إرث من الابتكار والنمو المستدام في تغذية النباتات</p>
         </div>
     </div>
 
-    <!-- Corporate Profile -->
+    <!-- Strategic Pillars / Mission & Values -->
     <section class="section-padding">
         <div class="container">
             <div class="text-center mb-lg">
+                <h4 class="text-gold mb-sm">رسالتنا ورؤيتنا</h4>
+                <h2>الركائز الإستراتيجية لأجروفيرت</h2>
+            </div>
+
+            <div class="mission-grid">
+                <div class="mission-card">
+                    <div class="mission-card-icon">
+                        <i class="fas fa-microscope"></i>
+                    </div>
+                    <h3>الابتكار العلمي</h3>
+                    <p>نعتمد على أحدث الأبحاث العلمية في تطوير تركيبات أسمدة عالية الأداء لضمان امتصاص سريع وتغذية مثالية لكل مرحلة نمو.</p>
+                </div>
+
+                <div class="mission-card">
+                    <div class="mission-card-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>استدامة التربة</h3>
+                    <p>نلتزم بحماية النظام البيئي الزراعي من خلال مركبات صديقة للبيئة تحافظ على صحة التربة وخصوبتها للأجيال القادمة.</p>
+                </div>
+
+                <div class="mission-card">
+                    <div class="mission-card-icon">
+                        <i class="fas fa-globe-americas"></i>
+                    </div>
+                    <h3>الانتشار العالمي</h3>
+                    <p>نقود التحول الزراعي عبر شبكة توزيع واسعة تغطي أكثر من 20 دولة لتحقيق الأمن الغذائي والاستدامة الإقليمية والدولية.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Stats Counter -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <i class="fas fa-history stat-icon"></i>
+                    <div class="stat-number" data-target="10" data-suffix="+">0</div>
+                    <div class="stat-label">سنوات من الخبرة والتميز</div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-handshake stat-icon"></i>
+                    <div class="stat-number" data-target="50" data-suffix="+">0</div>
+                    <div class="stat-label">شريك موزع حول العالم</div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-shipping-fast stat-icon"></i>
+                    <div class="stat-number" data-target="20" data-suffix="+">0</div>
+                    <div class="stat-label">دولة تصدير دولية</div>
+                </div>
+
+                <div class="stat-card">
+                    <i class="fas fa-award stat-icon"></i>
+                    <div class="stat-number" data-target="100" data-suffix="%">0</div>
+                    <div class="stat-label">معايير جودة ISO المعتمدة</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Corporate History Timeline -->
+    <section class="section-padding section-bg-light">
+        <div class="container">
+            <div class="text-center mb-lg">
                 <h4 class="text-gold mb-sm">تاريخنا</h4>
-                <h2>معالم التميز</h2>
+                <h2>معالم التميز والنمو</h2>
             </div>
 
             <div class="timeline">
                 <div class="timeline-item left">
                     <div class="timeline-content">
-                        <h3 style="color: var(--color-emerald);">2015</h3>
-                        <p>تأسست شركة أجروفيرت بهدف إحداث ثورة في تغذية النباتات</p>
+                        <h3 class="timeline-year">2015</h3>
+                        <p>تأسست شركة أجروفيرت بهدف إحداث ثورة في تغذية النباتات وتطوير مركبات عالية الجودة.</p>
                     </div>
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-content">
-                        <h3 style="color: var(--color-emerald);">2018</h3>
-                        <p>أطلقنا أول خط إنتاج للأسمدة السائلة الصديقة للبيئة</p>
+                        <h3 class="timeline-year">2018</h3>
+                        <p>إطلاق خط الإنتاج الأول للأسمدة السائلة فائقة التركيز والصديقة للبيئة.</p>
                     </div>
                 </div>
                 <div class="timeline-item left">
                     <div class="timeline-content">
-                        <h3 style="color: var(--color-emerald);">2020</h3>
-                        <p>الاعتماد على معايير الجودة ISO 14001</p>
+                        <h3 class="timeline-year">2020</h3>
+                        <p>الحصول على شهادات الاعتماد الدولي لإدارة الجودة والبيئة ISO 14001 وISO 9001.</p>
                     </div>
                 </div>
                 <div class="timeline-item right">
                     <div class="timeline-content">
-                        <h3 style="color: var(--color-emerald);">2022</h3>
-                        <p>توسيع العمليات إلى أسواق دولية</p>
+                        <h3 class="timeline-year">2022</h3>
+                        <p>توسيع نطاق التصدير الدولي والوصول إلى الأسواق الإقليمية والدولية.</p>
                     </div>
                 </div>
                 <div class="timeline-item left">
                     <div class="timeline-content">
-                        <h3 style="color: var(--color-emerald);">2025</h3>
-                        <p>الشراكة مع أكثر من 50 موزع محلي وعالمي</p>
+                        <h3 class="timeline-year">2025</h3>
+                        <p>بناء شبكة شراكات استراتيجية تضم أكثر من 50 موزعًا معتمدًا محليًا وعالميًا.</p>
                     </div>
                 </div>
             </div>
@@ -98,81 +167,78 @@
     </section>
 
     <!-- Team Section -->
-    <section class="section-padding" style="background-color: var(--color-white);">
+    <section class="section-padding section-bg-white">
         <div class="container">
             <div class="text-center mb-lg">
                 <h4 class="text-gold mb-sm">القيادة</h4>
-                <h2>تعرف على خبرائنا</h2>
+                <h2>تعرف على خبرائنا وفريق العمل</h2>
             </div>
 
             <div class="team-grid">
                 <div class="team-member">
                     <div class="team-img-container">
-                        <img src="assets/team_ceo.png" alt="CEO" class="team-img">
+                        <img src="assets/team_ceo.png" alt="م/ الحسين فتحي - المدير التنفيذي" class="team-img" loading="lazy" width="300" height="300">
                     </div>
-                    <div style="padding: 15px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 5px;">م/ الحسين فتحي</h3>
-                        <p class="text-gold" style="font-size: 0.9rem;">المدير التنفيذي</p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="team-img-container">
-                        <img src="https://media.istockphoto.com/id/1387118000/photo/researcher-working-whit-fluids-in-flasks-in-the-chemical-laboratory.jpg?s=612x612&w=0&k=20&c=iUkZascDSRqB0yxdjI414DDBn2DGcFT4eoImMNbFBqE="
-                            alt="Head Chemist" class="team-img">
-                    </div>
-                    <div style="padding: 15px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 5px;">عيسي فتحي</h3>
-                        <p class="text-gold" style="font-size: 0.9rem;">رئيس قسم البحث والتطوير</p>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">م/ الحسين فتحي</h3>
+                        <p class="text-gold team-member-role">المدير التنفيذي</p>
                     </div>
                 </div>
 
                 <div class="team-member">
                     <div class="team-img-container">
-                        <img src="assets/team_doc.jpg" alt="Senior Agronomist" class="team-img">
+                        <img src="assets/agronomist.jpg" alt="عيسي فتحي - رئيس قسم البحث والتطوير" class="team-img" loading="lazy" width="300" height="300">
                     </div>
-                    <div style="padding: 15px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 5px;">م/ أحمد سالم</h3>
-                        <p class="text-gold" style="font-size: 0.9rem;">مدير التسويق</p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <div class="team-img-container">
-                        <img src="assets/team_doc.jpg" alt="Senior Agronomist" class="team-img">
-                    </div>
-                    <div style="padding: 15px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 5px;">م/ أحمد مصطفي</h3>
-                        <p class="text-gold" style="font-size: 0.9rem;">المدير المالي</p>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">عيسي فتحي</h3>
+                        <p class="text-gold team-member-role">رئيس قسم البحث والتطوير</p>
                     </div>
                 </div>
 
                 <div class="team-member">
                     <div class="team-img-container">
-                        <img src="assets/team_agronomist.jpg" alt="Senior Agronomist" class="team-img">
+                        <img src="assets/team_doc.jpg" alt="م/ أحمد سالم - مدير التسويق" class="team-img" loading="lazy" width="300" height="300">
                     </div>
-                    <div style="padding: 15px;">
-                        <h3 style="font-size: 1.2rem; margin-bottom: 5px;">م/ عادل السيد</h3>
-                        <p class="text-gold" style="font-size: 0.9rem;">مرشد زراعي أول</p>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">م/ أحمد سالم</h3>
+                        <p class="text-gold team-member-role">مدير التسويق</p>
                     </div>
                 </div>
 
+                <div class="team-member">
+                    <div class="team-img-container">
+                        <img src="assets/team_doc.jpg" alt="م/ أحمد مصطفي - المدير المالي" class="team-img" loading="lazy" width="300" height="300">
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">م/ أحمد مصطفي</h3>
+                        <p class="text-gold team-member-role">المدير المالي</p>
+                    </div>
+                </div>
+
+                <div class="team-member">
+                    <div class="team-img-container">
+                        <img src="assets/team_agronomist.jpg" alt="م/ عادل السيد - مرشد زراعي أول" class="team-img" loading="lazy" width="300" height="300">
+                    </div>
+                    <div class="team-member-info">
+                        <h3 class="team-member-name">م/ عادل السيد</h3>
+                        <p class="text-gold team-member-role">مرشد زراعي أول</p>
+                    </div>
+                </div>
             </div>
-        </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section-padding" style="background-color: #f4f4f4;">
+    <!-- Contact & Partnership Section -->
+    <section id="contact" class="section-padding section-bg-light">
         <div class="container">
             <div class="text-center mb-lg">
                 <h4 class="text-gold mb-sm">تواصل معنا</h4>
-                <h2>ابدأ شراكتك</h2>
+                <h2>ابدأ شراكتك معنا اليوم</h2>
             </div>
 
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3 class="mb-md">معلومات الاتصال</h3>
+                    <h3 class="mb-md">معلومات الاتصال والموقع</h3>
                     <div class="contact-info-item">
                         <i class="fas fa-map-marker-alt contact-icon"></i>
                         <div>
@@ -184,31 +250,58 @@
                         <i class="fas fa-phone contact-icon"></i>
                         <div>
                             <h4>هاتف</h4>
-                            <p>+201004912530</p>
+                            <p><a href="tel:+201004912530">+20 100 491 2530</a></p>
                         </div>
                     </div>
                     <div class="contact-info-item">
                         <i class="fas fa-envelope contact-icon"></i>
                         <div>
-                            <h4>البريد إلكتروني</h4>
-                            <p>info@agrofert.com</p>
+                            <h4>البريد الإلكتروني</h4>
+                            <p><a href="mailto:info@agrofert.com">info@agrofert.com</a></p>
                         </div>
                     </div>
 
                     <div class="map-container">
-                        <!-- Simulated Map (Grayscale) -->
                         <iframe
+                            title="خريطة مقر أجروفيرت"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d428.16299167394783!2d32.30489381863962!3d30.850164608085187!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f9ab0070c15565%3A0x935338eb49ea89fe!2z2YXZiNmEINin2YTYt9mK2Kg!5e0!3m2!1sar!2seg!4v1764234203866!5m2!1sar!2seg"
-                            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            width="600" height="450" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-
                 </div>
 
                 <div class="contact-form-wrapper">
-                    <!--  -->
+                    <h3 class="contact-form-title">إرسال استفسار أو طلب شراكة</h3>
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="contactName" class="form-label">الاسم بالكامل *</label>
+                            <input type="text" id="contactName" class="form-control" placeholder="أدخل اسمك الكريم" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactEmail" class="form-label">البريد الإلكتروني *</label>
+                            <input type="email" id="contactEmail" class="form-control" placeholder="name@domain.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactPhone" class="form-label">رقم الهاتف</label>
+                            <input type="tel" id="contactPhone" class="form-control" placeholder="+20 100 000 0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="contactRole" class="form-label">نوع الطلب</label>
+                            <select id="contactRole" class="form-select">
+                                <option value="distributor">طلب موزع محلي / دولي</option>
+                                <option value="farmer">استشارة زراعية للمزارعين</option>
+                                <option value="investor">فرص الاستثمار والشراكة</option>
+                                <option value="other">استفسار عام</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="contactMessage" class="form-label">الرسالة *</label>
+                            <textarea id="contactMessage" class="form-control" placeholder="اكتب تفاصيل استفسارك هنا..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;"><i class="fas fa-paper-plane"></i> إرسال الرسالة</button>
+                        <div id="contactToast" class="contact-toast"></div>
+                    </form>
                 </div>
-
             </div>
         </div>
     </section>
@@ -221,12 +314,11 @@
                     <a href="#" class="logo mb-sm">
                         <i class="fas fa-leaf"></i> Agro<span>fert</span>
                     </a>
-                    <p style="font-size: 0.9rem; opacity: 0.8;">تنمية زراعية حديثة من خلال العلم والاستدامة. أجروفيرت
-                        شريككم في النمو.</p>
+                    <p class="footer-tagline">تنمية زراعية حديثة من خلال العلم والاستدامة. أجروفيرت شريككم في النمو.</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -234,7 +326,6 @@
                     <ul class="footer-links">
                         <li><a href="./products.html">المنتجات</a></li>
                         <li><a href="./about.html">عنا</a></li>
-                        <!-- <li><a href="#">الشركاء</a></li> -->
                         <li><a href="./support.html">الدعم</a></li>
                     </ul>
                 </div>
@@ -242,19 +333,14 @@
                     <h4>قانوني</h4>
                     <ul class="footer-links">
                         <li><a href="./support.html">سياسة الخصوصية وشروط الاستخدام</a></li>
-                        <li><a href="#">سياسة ملفات تعريف الارتباط</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>النشرة الإخبارية</h4>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">اشترك للحصول على تحديثات السوق
-                        ونصائح زراعية</p>
-                    <form style="display: flex;">
-                        <input type="email" placeholder="بريدك الإلكتروني"
-                            style="padding: 10px; border: none; width: 100%; border-radius: 2px 0 0 2px;">
-                        <button type="submit" class="btn-primary"
-                            style="padding: 10px 15px; border-radius: 0 2px 2px 0;"><i
-                                class="fas fa-paper-plane"></i></button>
+                    <p class="newsletter-text">اشترك للحصول على تحديثات السوق ونصائح زراعية</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" class="newsletter-input">
+                        <button type="submit" class="btn-primary newsletter-btn" aria-label="اشتراك"><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
                 <div class="language">
@@ -267,8 +353,7 @@
                 <br>
                 <p class="text-sm mb-6 text-gray-400">
                     Powered By
-                    <a id="powered" target="_blank" rel="noopener noreferrer"
-                        href="https://pioneercode1.github.io/pioneercode/">
+                    <a id="powered" target="_blank" rel="noopener noreferrer" href="https://pioneercode1.github.io/pioneercode/">
                         Pioneercode
                     </a>
                 </p>

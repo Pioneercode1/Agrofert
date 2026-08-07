@@ -1,201 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32*32" href="./assets/agrofert_icon-32.png">
-    <meta property="og:title" content="Agrofert">
-    <meta property="og:type" content="Agrofert website">
-    <meta property="og:image" content="https://i.ibb.co/B5NJS4Pv/agrofert-630.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/agrofert_icon-32.png">
+    <meta name="description" content="Agrofert Products Catalog - Liquid fertilizers, granular complexes, and biostimulants for every crop and growth stage.">
+    <meta property="og:title" content="Agrofert | Our Products">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/agrofert-630.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:description"
-        content="Premium agricultural nutrients and chemical solutions for sustainable global food security.">
+    <meta property="og:description" content="Advanced plant nutrition formulas from Agrofert.">
     <meta property="og:site_name" content="Agrofert">
 
     <title>Agrofert | Our Products</title>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 </head>
 
 <body>
-    <>
 
-        <!-- Header -->
-        <header>
-            <div class="container">
-                <nav>
-                    <a href="./index-en.html" class="logo">
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <a href="./index-en.html" class="logo">
+                    <i class="fas fa-leaf"></i> Agro<span>fert</span>
+                </a>
+                <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <div class="nav-links">
+                    <a href="./index-en.html">Home</a>
+                    <a href="./products-en.html" class="active">Products</a>
+                    <a href="./about-en.html">About Us</a>
+                    <a href="./support-en.html">Support</a>
+                    <a href="./about-en.html#contact" class="btn btn-primary btn-nav">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <h1>Nutritional Solutions</h1>
+            <p>Advanced formulas for every crop and growth stage.</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="products-layout">
+            <aside class="filters">
+                <div class="filter-group">
+                    <h3 class="filter-title">Search Products</h3>
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="productSearch" placeholder="Search by name or element..." class="search-input" aria-label="Search products">
+                        <button id="clearSearch" class="clear-search-btn" aria-label="Clear search">&times;</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-title">Product Type</h3>
+                    <label class="filter-option"><input type="checkbox" name="type" value="Liquid"> Liquid Fertilizers</label>
+                    <label class="filter-option"><input type="checkbox" name="type" value="Granular"> Granular</label>
+                    <label class="filter-option"><input type="checkbox" name="type" value="Powder"> Water Soluble Powder</label>
+                    <label class="filter-option"><input type="checkbox" name="type" value="Organic"> Biostimulants</label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-title">Application</h3>
+                    <label class="filter-option"><input type="checkbox" name="app" value="foliar"> Foliar</label>
+                    <label class="filter-option"><input type="checkbox" name="app" value="soil"> Soil Application</label>
+                    <label class="filter-option"><input type="checkbox" name="app" value="fertigation"> Fertigation</label>
+                </div>
+                <div class="filter-group">
+                    <h3 class="filter-title">Crop Focus</h3>
+                    <label class="filter-option"><input type="checkbox" name="crop" value="Cereals"> Cereals</label>
+                    <label class="filter-option"><input type="checkbox" name="crop" value="Fruits"> Fruits & Vegetables</label>
+                    <label class="filter-option"><input type="checkbox" name="crop" value="Ornamentals"> Ornamentals</label>
+                </div>
+            </aside>
+
+            <main class="products-main">
+                <div class="filter-header-bar">
+                    <div>
+                        <span id="resultsCounter" class="results-counter"></span>
+                        <span id="activeFilterBadge" class="filter-badge-count"></span>
+                    </div>
+                    <button id="resetFilters" class="btn-reset">
+                        <i class="fas fa-undo"></i> Reset Filters
+                    </button>
+                </div>
+                <div class="products-grid" id="product-container"></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Modal Window -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <button id="modalCloseButton" class="modal-close" aria-label="Close">&times;</button>
+            <div class="modal-left">
+                <img id="modalImg" src="" alt="Product Image" class="modal-img">
+            </div>
+            <div class="modal-details">
+                <div class="product-badges modal-badges" id="modalBadges"></div>
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <p id="modalDesc" class="mb-md"></p>
+
+                <h4 id="modalCompositionTitle" class="text-gold mb-sm">Technical Composition</h4>
+                <table class="modal-table">
+                    <thead>
+                        <tr id="compositionHeader">
+                            <th>Element</th>
+                            <th>Concentration</th>
+                        </tr>
+                    </thead>
+                    <tbody id="modalCompositionBody"></tbody>
+                </table>
+
+                <h4 id="modalApplicationTitle" class="text-gold mb-sm modal-app-title">Application Guide</h4>
+                <div id="modalApplication" class="modal-application"></div>
+
+                <div class="modal-actions">
+                    <button id="modalRequestQuote" class="btn btn-primary">Request Quote</button>
+                    <button id="modalSDS" class="btn btn-outline"><i class="fas fa-file-pdf"></i> SDS Sheet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo mb-sm">
                         <i class="fas fa-leaf"></i> Agro<span>fert</span>
                     </a>
-                    <div class="nav-links">
-                        <a href="./index-en.html">Home</a>
-                        <a href="./products-en.html" class="active" style="color: var(--color-emerald);">Products</a>
-                        <a href="./about-en.html">About Us</a>
-                        <a href="./support-en.html">Support</a>
-                        <a href="./about-en.html" class="btn btn-primary"
-                            style="padding: 8px 20px; font-size: 0.8rem;">Contact</a>
+                    <p class="footer-tagline">Empowering agriculture through science and sustainability. Your partner in growth.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
-                </nav>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="./products-en.html">Our Products</a></li>
+                        <li><a href="./about-en.html">About Us</a></li>
+                        <li><a href="./support-en.html">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="./support-en.html">Privacy Policy & Terms of Use</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p class="newsletter-text">Subscribe for market updates and agricultural tips.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email" class="newsletter-input">
+                        <button type="submit" class="btn-primary newsletter-btn" aria-label="Subscribe"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
             </div>
-        </header>
-
-        <!-- Page Header -->
-        <div class="page-header">
-            <div class="container">
-                <h1>Nutritional Solutions</h1>
-                <p>Advanced formulas for every crop and growth stage.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Agrofert Chemical Industries. All Rights Reserved.</p>
+                <br>
+                <p class="text-sm mb-6 text-gray-400">
+                    Powered By
+                    <a id="powered" target="_blank" rel="noopener noreferrer" href="https://pioneercode1.github.io/pioneercode/">
+                        Pioneercode
+                    </a>
+                </p>
             </div>
         </div>
+    </footer>
 
-        <!-- Main Content -->
-
-        <div class="container">
-            <div class="products-layout">
-                <aside class="filters">
-                    <div class="filter-group">
-                        <h3 class="filter-title">Product Type</h3>
-                        <label class="filter-option"><input type="checkbox" name="type" value="Liquid"> Liquid
-                            Fertilizers</label>
-                        <label class="filter-option"><input type="checkbox" name="type" value="Granular">
-                            Granular</label>
-                        <label class="filter-option"><input type="checkbox" name="type" value="Powder"> Water Soluble
-                            Powder</label>
-                        <label class="filter-option"><input type="checkbox" name="type" value="Organic">
-                            Biostimulants</label>
-                    </div>
-                    <div class="filter-group">
-                        <h3 class="filter-title">Application</h3>
-                        <label class="filter-option"><input type="checkbox" name="app" value="foliar"> Foliar</label>
-                        <label class="filter-option"><input type="checkbox" name="app" value="soil"> Soil
-                            Application</label>
-                        <label class="filter-option"><input type="checkbox" name="app" value="fertigation">
-                            Fertigation</label>
-                    </div>
-                    <div class="filter-group">
-                        <h3 class="filter-title">Crop Focus</h3>
-                        <label class="filter-option"><input type="checkbox" name="crop" value="Cereals"> Cereals</label>
-                        <label class="filter-option"><input type="checkbox" name="crop" value="Fruits"> Fruits &
-                            Vegetables</label>
-                        <label class="filter-option"><input type="checkbox" name="crop" value="Ornamentals">
-                            Ornamentals</label>
-                    </div>
-                </aside>
-
-                <main class="products-grid" id="product-container"></main>
-            </div>
-        </div>
-
-        <div id="productModal" class="modal">
-            <div class="modal-content">
-                <button id="modalCloseButton" class="modal-close" onclick="closeModal()"
-                    aria-label="Close">&times;</button>
-                <div class="modal-left">
-                    <img id="modalImg" src="" alt="Product Image" class="modal-img">
-                </div>
-                <div class="modal-details">
-                    <div class="product-badges" id="modalBadges"
-                        style="justify-content: flex-start; margin-bottom: 10px;">
-                    </div>
-                    <h2 id="modalTitle" style="color: var(--color-emerald); margin-bottom: 10px;"></h2>
-                    <p id="modalDesc" class="mb-md"></p>
-
-                    <h4 id="modalCompositionTitle" class="text-gold mb-sm">Technical Composition</h4>
-                    <table class="modal-table">
-                        <thead>
-                            <tr id="compositionHeader">
-                                <th>Element</th>
-                                <th>Concentration</th>
-                            </tr>
-                        </thead>
-                        <tbody id="modalCompositionBody"></tbody>
-                    </table>
-
-                    <h4 id="modalApplicationTitle" class="text-gold mb-sm" style="margin-top: 20px;">Application Guide
-                    </h4>
-                    <div id="modalApplication" style="display: flex; gap: 20px; margin-bottom: 20px;"></div>
-
-                    <div style="display: flex; gap: 10px;">
-                        <button id="modalRequestQuote" class="btn btn-primary">Request Quote</button>
-                        <button id="modalSDS" class="btn btn-outline"><i class="fas fa-file-pdf"></i> SDS Sheet</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <footer>
-            <div class="container">
-                <div class="footer-grid">
-                    <div class="footer-col">
-                        <a href="#" class="logo mb-sm">
-                            <i class="fas fa-leaf"></i> Agro<span>fert</span>
-                        </a>
-                        <p style="font-size: 0.9rem; opacity: 0.8;">Empowering agriculture through science and
-                            sustainability. Your partner in growth.</p>
-                        <div class="social-icons">
-                            <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Quick Links</h4>
-                        <ul class="footer-links">
-                            <li><a href="./products-en.html">Our Products</a></li>
-                            <li><a href="./about-en.html">About Us</a></li>
-                            <li><a href="./support-en.html">Support</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Legal</h4>
-                        <ul class="footer-links">
-                            <li><a href="./support-en.html">Privacy Policy & Terms of Use</a></li>
-                            <li><a href="#">Cookie Policy</a></li>
-                        </ul>
-                    </div>
-                    <div class="footer-col">
-                        <h4>Newsletter</h4>
-                        <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">Subscribe for market updates
-                            and
-                            agricultural tips.</p>
-                        <form style="display: flex;">
-                            <input type="email" placeholder="Your Email"
-                                style="padding: 10px; border: none; width: 100%; border-radius: 2px 0 0 2px;">
-                            <button type="submit" class="btn-primary"
-                                style="padding: 10px 15px; border-radius: 0 2px 2px 0;"><i
-                                    class="fas fa-paper-plane"></i></button>
-                        </form>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>&copy; 2025 Agrofert Chemical Industries. All Rights Reserved.</p>
-                    <br>
-                    <p class="text-sm mb-6 text-gray-400">
-                        Powered By
-                        <a id="powered" target="_blank" rel="noopener noreferrer"
-                            href="https://pioneercode1.github.io/pioneercode/">
-                            Pioneercode
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </footer>
-
-        <script src="js/main.js"></script>
-        <script src="js/products-data.js"></script>
-        <script>
-            // Initiate the page rendering for English ('en')
-            document.addEventListener('DOMContentLoaded', () => {
-                renderProducts(products, 'en');
-                setupFilters('en');
-            });
-        </script>
+    <script src="js/products-data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/products-init.js"></script>
 </body>
 
 </html>

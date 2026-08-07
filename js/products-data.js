@@ -149,16 +149,21 @@ function getUIText(key, lang) {
             'products_p': 'Advanced formulas for every crop and growth stage.',
             'view_details': 'View Details',
             'no_products': 'No products found',
-            'adjust_filters': 'Try adjusting your filters.',
+            'adjust_filters': 'Try adjusting your filters or search query.',
             'type_title': 'Product Type',
             'app_title': 'Application',
             'crop_title': 'Crop Focus',
+            'search_title': 'Search Products',
+            'search_placeholder': 'Search by name or element (e.g. Boron, NPK)...',
             'element': 'Element',
             'conc': 'Concentration',
             'comp_title': 'Technical Composition',
             'app_guide': 'Application Guide',
             'request_quote': 'Request Quote',
             'sds_sheet': 'SDS Sheet',
+            'reset_filters': 'Reset Filters',
+            'showing_results': 'Showing {count} of {total} products',
+            'active_filters': '{count} active',
             // Filter options (must match value attribute)
             'Liquid': 'Liquid Fertilizers',
             'Granular': 'Granular',
@@ -176,16 +181,21 @@ function getUIText(key, lang) {
             'products_p': 'تركيبات متقدمة لكل محصول ومرحلة نمو.',
             'view_details': 'عرض التفاصيل',
             'no_products': 'لا يوجد منتجات',
-            'adjust_filters': 'يرجى تعديل الفلاتر.',
+            'adjust_filters': 'يرجى تعديل الفلاتر أو نص البحث.',
             'type_title': 'نوع المنتج',
             'app_title': 'التطبيق',
             'crop_title': 'تركيز المحصول',
+            'search_title': 'بحث عن منتج',
+            'search_placeholder': 'ابحث باسم المنتج أو العنصر (مثل بورون، NPK)...',
             'element': 'العنصر',
             'conc': 'التركيز',
             'comp_title': 'التركيبة الفنية',
             'app_guide': 'دليل التطبيق',
             'request_quote': 'طلب عرض سعر',
             'sds_sheet': 'ورقة بيانات السلامة',
+            'reset_filters': 'إعادة ضبط',
+            'showing_results': 'عرض {count} من {total} منتجات',
+            'active_filters': '{count} نشط',
             // Filter options
             'Liquid': 'الأسمدة السائلة',
             'Granular': 'الحبيبية',
@@ -199,15 +209,59 @@ function getUIText(key, lang) {
             'Ornamentals': 'نباتات الزينة'
         }
     };
-    return uiStrings[lang][key] || uiStrings['en'][key];
+    return uiStrings[lang][key] || uiStrings['en'][key] || key;
 }
 
-// --- 3. FILTER LOGIC ---
+// --- 3. FILTER & SEARCH LOGIC ---
+let searchDebounceTimer = null;
+
 function setupFilters(lang) {
+    // 1. Checkboxes change listener
     const checkboxes = document.querySelectorAll('.filter-option input');
     checkboxes.forEach(box => {
         box.addEventListener('change', () => filterAndRender(lang));
     });
+
+    // 2. Text Search Input with 150ms debounce
+    const searchInput = document.getElementById('productSearch');
+    const searchBox = document.querySelector('.search-box');
+    const clearSearchBtn = document.getElementById('clearSearch');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.trim();
+            if (searchBox) {
+                searchBox.classList.toggle('has-text', query.length > 0);
+            }
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(() => {
+                filterAndRender(lang);
+            }, 150);
+        });
+    }
+
+    // 3. Clear Search Button
+    if (clearSearchBtn && searchInput) {
+        clearSearchBtn.addEventListener('click', () => {
+            searchInput.value = '';
+            if (searchBox) searchBox.classList.remove('has-text');
+            filterAndRender(lang);
+            searchInput.focus();
+        });
+    }
+
+    // 4. Reset All Filters Button
+    const resetBtn = document.getElementById('resetFilters');
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            checkboxes.forEach(cb => { cb.checked = false; });
+            if (searchInput) {
+                searchInput.value = '';
+                if (searchBox) searchBox.classList.remove('has-text');
+            }
+            filterAndRender(lang);
+        });
+    }
 }
 
 function filterAndRender(lang) {
@@ -215,16 +269,72 @@ function filterAndRender(lang) {
     const activeApps = Array.from(document.querySelectorAll('input[name="app"]:checked')).map(cb => cb.value);
     const activeCrops = Array.from(document.querySelectorAll('input[name="crop"]:checked')).map(cb => cb.value);
 
+    const searchInput = document.getElementById('productSearch');
+    const searchQuery = searchInput ? searchInput.value.trim().toLowerCase() : '';
+
     const filtered = products.filter(product => {
+        // Filter by Types
         const matchesType = activeTypes.length === 0 || activeTypes.some(type => product.badges.includes(type));
+        
+        // Filter by Applications
         const productAppKeys = Object.keys(product.application);
         const matchesApp = activeApps.length === 0 || activeApps.some(app => productAppKeys.includes(app));
+        
+        // Filter by Crops
         const matchesCrop = activeCrops.length === 0 || activeCrops.some(crop => product.crops.includes(crop));
 
-        return matchesType && matchesApp && matchesCrop;
+        // Search text matching (title, desc, composition elements)
+        let matchesSearch = true;
+        if (searchQuery.length > 0) {
+            const titleMatch = (product.title && product.title.toLowerCase().includes(searchQuery)) ||
+                               (product.title_ar && product.title_ar.toLowerCase().includes(searchQuery));
+            const shortDescMatch = (product.shortDesc && product.shortDesc.toLowerCase().includes(searchQuery)) ||
+                                  (product.shortDesc_ar && product.shortDesc_ar.toLowerCase().includes(searchQuery));
+            const fullDescMatch = (product.fullDesc && product.fullDesc.toLowerCase().includes(searchQuery)) ||
+                                 (product.fullDesc_ar && product.fullDesc_ar.toLowerCase().includes(searchQuery));
+            const compositionMatch = product.composition && product.composition.some(item => 
+                (item.element && item.element.toLowerCase().includes(searchQuery)) ||
+                (item.element_ar && item.element_ar.toLowerCase().includes(searchQuery))
+            );
+
+            matchesSearch = titleMatch || shortDescMatch || fullDescMatch || compositionMatch;
+        }
+
+        return matchesType && matchesApp && matchesCrop && matchesSearch;
     });
 
+    // Update UI counters and reset button states
+    updateFilterUI(filtered.length, products.length, activeTypes.length + activeApps.length + activeCrops.length + (searchQuery.length > 0 ? 1 : 0), lang);
+
+    // Render filtered results
     renderProducts(filtered, lang);
+}
+
+function updateFilterUI(count, total, activeFilterCount, lang) {
+    // 1. Results counter
+    const counterEl = document.getElementById('resultsCounter');
+    if (counterEl) {
+        const textTemplate = getUIText('showing_results', lang);
+        counterEl.innerText = textTemplate.replace('{count}', count).replace('{total}', total);
+    }
+
+    // 2. Active filter count badge
+    const badgeEl = document.getElementById('activeFilterBadge');
+    if (badgeEl) {
+        if (activeFilterCount > 0) {
+            const badgeTemplate = getUIText('active_filters', lang);
+            badgeEl.innerText = badgeTemplate.replace('{count}', activeFilterCount);
+            badgeEl.style.display = 'inline-block';
+        } else {
+            badgeEl.style.display = 'none';
+        }
+    }
+
+    // 3. Reset button visibility toggle
+    const resetBtn = document.getElementById('resetFilters');
+    if (resetBtn) {
+        resetBtn.style.visibility = activeFilterCount > 0 ? 'visible' : 'hidden';
+    }
 }
 
 
@@ -232,9 +342,10 @@ function filterAndRender(lang) {
 
 function renderProducts(list, lang) {
     const container = document.getElementById('product-container');
+    if (!container) return;
 
     if (list.length === 0) {
-        container.innerHTML = `<div style="text-align:center; grid-column: 1/-1; padding: 40px;">
+        container.innerHTML = `<div class="no-products-msg">
             <h3>${getUIText('no_products', lang)}</h3>
             <p>${getUIText('adjust_filters', lang)}</p>
         </div>`;
@@ -248,19 +359,28 @@ function renderProducts(list, lang) {
         const detailsText = getUIText('view_details', lang);
 
         return `
-            <div class="product-card" onclick="openProductModal(${product.id}, '${lang}')">
-                <img src="${product.image}" alt="${title}" class="product-img">
+            <div class="product-card product-card-animating" data-id="${product.id}" data-lang="${lang}">
+                <img src="${product.image}" alt="${title}" class="product-img" loading="lazy">
                 <div class="product-info">
                     <div class="product-badges">
                         ${badges.map(badge => `<span class="badge">${badge}</span>`).join('')}
                     </div>
                     <h3 class="product-title">${title}</h3>
                     <p class="mb-sm">${shortDesc}</p>
-                    <button class="btn btn-outline" style="width: 100%; padding: 8px;">${detailsText}</button>
+                    <button class="btn btn-outline product-card-btn">${detailsText}</button>
                 </div>
             </div>
         `;
     }).join('');
+
+    // Attach click event listeners dynamically (no inline onclick)
+    container.querySelectorAll('.product-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const id = parseInt(card.getAttribute('data-id'), 10);
+            const cardLang = card.getAttribute('data-lang');
+            openProductModal(id, cardLang);
+        });
+    });
 }
 
 
@@ -276,7 +396,10 @@ function openProductModal(id, lang) {
     document.getElementById('modalApplicationTitle').innerText = getUIText('app_guide', lang);
     document.getElementById('modalRequestQuote').innerText = getUIText('request_quote', lang);
     document.getElementById('modalSDS').innerHTML = `<i class="fas fa-file-pdf"></i> ${getUIText('sds_sheet', lang)}`;
-    document.getElementById('modalCloseButton').setAttribute('aria-label', lang === 'ar' ? 'إغلاق' : 'Close');
+    const closeBtn = document.getElementById('modalCloseButton');
+    if (closeBtn) {
+        closeBtn.setAttribute('aria-label', lang === 'ar' ? 'إغلاق' : 'Close');
+    }
 
     // 2. Badges
     const badgeContainer = document.getElementById('modalBadges');
@@ -308,8 +431,8 @@ function openProductModal(id, lang) {
 
         return `
             <div class="text-center">
-                <i class="fas ${iconClass}" style="font-size: 1.5rem; color: var(--color-emerald);"></i>
-                <p style="font-size: 0.8rem; margin-top: 5px;">${label}<br><strong>${rate}</strong></p>
+                <i class="fas ${iconClass} app-rate-icon"></i>
+                <p class="app-rate-text">${label}<br><strong>${rate}</strong></p>
             </div>`;
     };
 
@@ -321,18 +444,22 @@ function openProductModal(id, lang) {
     appContainer.innerHTML = appHTML;
 
     // 5. Show Modal
-    document.getElementById('productModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    const modal = document.getElementById('productModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function closeModal() {
-    document.getElementById('productModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
+    const modal = document.getElementById('productModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
 }
 
-window.onclick = function (event) {
-    if (event.target == document.getElementById('productModal')) closeModal();
-}
-
-// Attach event listeners and render on DOM ready (called from HTML files)
-// Example: document.addEventListener('DOMContentLoaded', () => { renderProducts(products, 'en'); setupFilters('en'); });
+window.addEventListener('click', (event) => {
+    const modal = document.getElementById('productModal');
+    if (event.target === modal) closeModal();
+});

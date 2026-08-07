@@ -4,26 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32*32" href="./assets/agrofert_icon-32.png">
-    <meta property="og:title" content="Agrofert">
-    <meta property="og:type" content="Agrofert website">
-    <meta property="og:image" content="https://i.ibb.co/B5NJS4Pv/agrofert-630.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/agrofert_icon-32.png">
+    <meta name="description" content="كتالوج منتجات أجروفيرت - أسمدة سائلة، حبيبية، ومحفزات حيوية لكل محصول ومرحلة نمو.">
+    <meta property="og:title" content="أجروفيرت | جميع المنتجات">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="./assets/agrofert-630.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:description"
-        content="Premium agricultural nutrients and chemical solutions for sustainable global food security.">
-    <meta property="og:site_name" content="Agrofert">
+    <meta property="og:description" content="حلول وتغذية نباتية متقدمة من أجروفيرت.">
+    <meta property="og:site_name" content="أجروفيرت">
 
     <title>أجروفيرت | جميع المنتجات</title>
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
 </head>
 
 <body>
@@ -35,13 +32,17 @@
                 <a href="./index.html" class="logo">
                     <i class="fas fa-leaf"></i> Agro<span>fert</span>
                 </a>
+                <button class="menu-toggle" aria-label="قائمة التنقل" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <div class="nav-links">
                     <a href="./index.html">الرئيسية</a>
-                    <a href="./products.html" class="active" style="color: var(--color-emerald);">المنتجات</a>
+                    <a href="./products.html" class="active">المنتجات</a>
                     <a href="./about.html">عنا</a>
                     <a href="./support.html">الدعم</a>
-                    <a href="./about.html" class="btn btn-primary"
-                        style="padding: 8px 20px; font-size: 0.8rem;">الاتصال</a>
+                    <a href="./about.html#contact" class="btn btn-primary btn-nav">الاتصال</a>
                 </div>
             </nav>
         </div>
@@ -60,14 +61,19 @@
         <div class="products-layout">
             <aside class="filters">
                 <div class="filter-group">
+                    <h3 class="filter-title">بحث عن منتج</h3>
+                    <div class="search-box">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="productSearch" placeholder="ابحث باسم المنتج أو العنصر..." class="search-input" aria-label="بحث عن منتج">
+                        <button id="clearSearch" class="clear-search-btn" aria-label="مسح البحث">&times;</button>
+                    </div>
+                </div>
+                <div class="filter-group">
                     <h3 class="filter-title">نوع المنتج</h3>
-                    <label class="filter-option"><input type="checkbox" name="type" value="Liquid"> الأسمدة
-                        السائلة</label>
+                    <label class="filter-option"><input type="checkbox" name="type" value="Liquid"> الأسمدة السائلة</label>
                     <label class="filter-option"><input type="checkbox" name="type" value="Granular"> الحبيبية</label>
-                    <label class="filter-option"><input type="checkbox" name="type" value="Powder"> مسحوق قابل
-                        للذوبان</label>
-                    <label class="filter-option"><input type="checkbox" name="type" value="Organic"> المحفزات
-                        الحيوية</label>
+                    <label class="filter-option"><input type="checkbox" name="type" value="Powder"> مسحوق قابل للذوبان</label>
+                    <label class="filter-option"><input type="checkbox" name="type" value="Organic"> المحفزات الحيوية</label>
                 </div>
                 <div class="filter-group">
                     <h3 class="filter-title">التطبيق</h3>
@@ -78,27 +84,36 @@
                 <div class="filter-group">
                     <h3 class="filter-title">تركيز المحصول</h3>
                     <label class="filter-option"><input type="checkbox" name="crop" value="Cereals"> الحبوب</label>
-                    <label class="filter-option"><input type="checkbox" name="crop" value="Fruits"> الفواكه
-                        والخضروات</label>
-                    <label class="filter-option"><input type="checkbox" name="crop" value="Ornamentals"> نباتات
-                        الزينة</label>
+                    <label class="filter-option"><input type="checkbox" name="crop" value="Fruits"> الفواكه والخضروات</label>
+                    <label class="filter-option"><input type="checkbox" name="crop" value="Ornamentals"> نباتات الزينة</label>
                 </div>
             </aside>
 
-            <main class="products-grid" id="product-container"></main>
+            <main class="products-main">
+                <div class="filter-header-bar">
+                    <div>
+                        <span id="resultsCounter" class="results-counter"></span>
+                        <span id="activeFilterBadge" class="filter-badge-count"></span>
+                    </div>
+                    <button id="resetFilters" class="btn-reset">
+                        <i class="fas fa-undo"></i> إعادة ضبط
+                    </button>
+                </div>
+                <div class="products-grid" id="product-container"></div>
+            </main>
         </div>
     </div>
 
+    <!-- Modal Window -->
     <div id="productModal" class="modal">
         <div class="modal-content">
-            <button id="modalCloseButton" class="modal-close" onclick="closeModal()" aria-label="إغلاق">&times;</button>
+            <button id="modalCloseButton" class="modal-close" aria-label="إغلاق">&times;</button>
             <div class="modal-left">
                 <img id="modalImg" src="" alt="صورة المنتج" class="modal-img">
             </div>
-            <div class="modal-details" style="text-align: right;">
-                <div class="product-badges" id="modalBadges" style="justify-content: flex-start; margin-bottom: 10px;">
-                </div>
-                <h2 id="modalTitle" style="color: var(--color-emerald); margin-bottom: 10px;"></h2>
+            <div class="modal-details modal-details-rtl">
+                <div class="product-badges modal-badges" id="modalBadges"></div>
+                <h2 id="modalTitle" class="modal-title"></h2>
                 <p id="modalDesc" class="mb-md"></p>
 
                 <h4 id="modalCompositionTitle" class="text-gold mb-sm">التركيبة الفنية</h4>
@@ -112,14 +127,12 @@
                     <tbody id="modalCompositionBody"></tbody>
                 </table>
 
-                <h4 id="modalApplicationTitle" class="text-gold mb-sm" style="margin-top: 20px;">دليل التطبيق</h4>
-                <div id="modalApplication"
-                    style="display: flex; gap: 20px; margin-bottom: 20px; justify-content: flex-end;"></div>
+                <h4 id="modalApplicationTitle" class="text-gold mb-sm modal-app-title">دليل التطبيق</h4>
+                <div id="modalApplication" class="modal-application modal-application-rtl"></div>
 
-                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                <div class="modal-actions modal-actions-rtl">
                     <button id="modalRequestQuote" class="btn btn-primary">طلب عرض سعر</button>
-                    <button id="modalSDS" class="btn btn-outline"><i class="fas fa-file-pdf"></i> ورقة بيانات
-                        السلامة</button>
+                    <button id="modalSDS" class="btn btn-outline"><i class="fas fa-file-pdf"></i> ورقة بيانات السلامة</button>
                 </div>
             </div>
         </div>
@@ -133,12 +146,11 @@
                     <a href="#" class="logo mb-sm">
                         <i class="fas fa-leaf"></i> Agro<span>fert</span>
                     </a>
-                    <p style="font-size: 0.9rem; opacity: 0.8;">تنمية زراعية حديثة من خلال العلم والاستدامة. أجروفيرت
-                        شريككم في النمو.</p>
+                    <p class="footer-tagline">تنمية زراعية حديثة من خلال العلم والاستدامة. أجروفيرت شريككم في النمو.</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -153,19 +165,14 @@
                     <h4>قانوني</h4>
                     <ul class="footer-links">
                         <li><a href="./support.html">سياسة الخصوصية وشروط الاستخدام</a></li>
-                        <li><a href="#">سياسة ملفات تعريف الارتباط</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>النشرة الإخبارية</h4>
-                    <p style="font-size: 0.9rem; margin-bottom: 15px; opacity: 0.8;">اشترك للحصول على تحديثات السوق
-                        ونصائح زراعية</p>
-                    <form style="display: flex;">
-                        <input type="email" placeholder="بريدك الإلكتروني"
-                            style="padding: 10px; border: none; width: 100%; border-radius: 2px 0 0 2px;">
-                        <button type="submit" class="btn-primary"
-                            style="padding: 10px 15px; border-radius: 0 2px 2px 0;"><i
-                                class="fas fa-paper-plane"></i></button>
+                    <p class="newsletter-text">اشترك للحصول على تحديثات السوق ونصائح زراعية</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="بريدك الإلكتروني" class="newsletter-input">
+                        <button type="submit" class="btn-primary newsletter-btn" aria-label="اشتراك"><i class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
@@ -174,8 +181,7 @@
                 <br>
                 <p class="text-sm mb-6 text-gray-400">
                     Powered By
-                    <a id="powered" target="_blank" rel="noopener noreferrer"
-                        href="https://pioneercode1.github.io/pioneercode/">
+                    <a id="powered" target="_blank" rel="noopener noreferrer" href="https://pioneercode1.github.io/pioneercode/">
                         Pioneercode
                     </a>
                 </p>
@@ -185,13 +191,7 @@
 
     <script src="js/products-data.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        // Initiate the page rendering for Arabic ('ar')
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProducts(products, 'ar');
-            setupFilters('ar');
-        });
-    </script>
+    <script src="js/products-init.js"></script>
 </body>
 
 </html>
