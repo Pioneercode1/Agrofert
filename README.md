@@ -1,8 +1,8 @@
 # AGROFERT — Corporate Website  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-![AGROFERT](screencapture-agrofert.png)
+![Screenshot](screencapture-agrofert.png)
 
-![Website] (https://pioneercode1.github.io/agrofert/)
+- Live Site URL: [AGROFERT] (https://pioneercode1.github.io/agrofert/)
 
 A modern and responsive corporate website developed for **AGROFERT for Development and Chemical Industrial**.
 
