@@ -192,22 +192,121 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- 10. Contact Form Interactive Handler ---
+    // --- 10. Contact Form Validation & Handler ---
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
+        const isArabic = document.documentElement.lang === 'ar';
+
+        // Validation messages
+        const msgs = {
+            nameRequired:  isArabic ? 'يرجى إدخال الاسم بالكامل' : 'Please enter your full name.',
+            nameMin:       isArabic ? 'الاسم يجب أن يكون حرفين على الأقل' : 'Name must be at least 2 characters.',
+            emailRequired: isArabic ? 'يرجى إدخال البريد الإلكتروني' : 'Please enter your email address.',
+            emailInvalid:  isArabic ? 'يرجى إدخال بريد إلكتروني صحيح' : 'Please enter a valid email address.',
+            phoneInvalid:  isArabic ? 'يرجى إدخال رقم هاتف صحيح (مثال: +201001234567)' : 'Please enter a valid phone number (e.g. +201001234567).',
+            msgRequired:   isArabic ? 'يرجى كتابة رسالتك' : 'Please enter your message.',
+            msgMin:        isArabic ? 'الرسالة يجب أن تكون 10 أحرف على الأقل' : 'Message must be at least 10 characters.',
+            sending:       isArabic ? 'جاري الإرسال...' : 'Sending...',
+            success:       isArabic ? 'تم إرسال رسالتك بنجاح! سنتواصل معك قريبًا.' : 'Your message has been sent successfully! We will contact you soon.',
+            genericError:  isArabic ? 'يرجى تصحيح الأخطاء أعلاه' : 'Please fix the errors above.'
+        };
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+        const phoneRegex = /^\+?[\d\s\-()]{7,15}$/;
+
+        // Helper: show inline error below a field
+        function showFieldError(field, message) {
+            clearFieldError(field);
+            field.classList.add('error');
+            const errorEl = document.createElement('span');
+            errorEl.className = 'field-error';
+            errorEl.textContent = message;
+            field.parentElement.appendChild(errorEl);
+        }
+
+        // Helper: clear inline error for a field
+        function clearFieldError(field) {
+            field.classList.remove('error');
+            const existing = field.parentElement.querySelector('.field-error');
+            if (existing) existing.remove();
+        }
+
+        // Real-time: clear error when user starts typing
+        ['contactName', 'contactEmail', 'contactPhone', 'contactMessage'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) {
+                el.addEventListener('input', () => clearFieldError(el));
+            }
+        });
+
+        // Validate all fields, returns true if valid
+        function validateForm() {
+            let isValid = true;
+            const nameEl    = document.getElementById('contactName');
+            const emailEl   = document.getElementById('contactEmail');
+            const phoneEl   = document.getElementById('contactPhone');
+            const messageEl = document.getElementById('contactMessage');
+
+            // Name validation
+            const name = nameEl?.value.trim() ?? '';
+            if (!name) {
+                showFieldError(nameEl, msgs.nameRequired);
+                isValid = false;
+            } else if (name.length < 2) {
+                showFieldError(nameEl, msgs.nameMin);
+                isValid = false;
+            } else {
+                clearFieldError(nameEl);
+            }
+
+            // Email validation
+            const email = emailEl?.value.trim() ?? '';
+            if (!email) {
+                showFieldError(emailEl, msgs.emailRequired);
+                isValid = false;
+            } else if (!emailRegex.test(email)) {
+                showFieldError(emailEl, msgs.emailInvalid);
+                isValid = false;
+            } else {
+                clearFieldError(emailEl);
+            }
+
+            // Phone validation (optional — only validate if filled)
+            const phone = phoneEl?.value.trim() ?? '';
+            if (phone && !phoneRegex.test(phone)) {
+                showFieldError(phoneEl, msgs.phoneInvalid);
+                isValid = false;
+            } else {
+                clearFieldError(phoneEl);
+            }
+
+            // Message validation
+            const message = messageEl?.value.trim() ?? '';
+            if (!message) {
+                showFieldError(messageEl, msgs.msgRequired);
+                isValid = false;
+            } else if (message.length < 10) {
+                showFieldError(messageEl, msgs.msgMin);
+                isValid = false;
+            } else {
+                clearFieldError(messageEl);
+            }
+
+            return isValid;
+        }
+
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const toast = document.getElementById('contactToast');
             const submitBtn = contactForm.querySelector('button[type="submit"]');
 
-            const name = document.getElementById('contactName')?.value.trim();
-            const email = document.getElementById('contactEmail')?.value.trim();
-            const message = document.getElementById('contactMessage')?.value.trim();
+            // Hide any previous toast
+            if (toast) toast.className = 'contact-toast';
 
-            if (!name || !email || !message) {
+            if (!validateForm()) {
                 if (toast) {
                     toast.className = 'contact-toast error';
-                    toast.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + (document.documentElement.lang === 'ar' ? 'يرجى ملء جميع الحقول المطلوبة' : 'Please fill in all required fields.');
+                    toast.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + msgs.genericError;
                 }
                 return;
             }
@@ -216,7 +315,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (submitBtn) {
                 submitBtn.disabled = true;
                 const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (document.documentElement.lang === 'ar' ? 'جاري الإرسال...' : 'Sending...');
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + msgs.sending;
 
                 setTimeout(() => {
                     submitBtn.disabled = false;
@@ -224,7 +323,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     contactForm.reset();
                     if (toast) {
                         toast.className = 'contact-toast success';
-                        toast.innerHTML = '<i class="fas fa-check-circle"></i> ' + (document.documentElement.lang === 'ar' ? 'تم إرسال رسالتك بنجاح! سنتواصل معك قريبًا.' : 'Your message has been sent successfully! We will contact you soon.');
+                        toast.innerHTML = '<i class="fas fa-check-circle"></i> ' + msgs.success;
                     }
                 }, 1000);
             }

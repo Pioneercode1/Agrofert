@@ -1622,3 +1622,44 @@ textarea.form-control {
     color: #c62828;
     border: 1px solid #ef9a9a;
 }
+
+/* ========================================
+   Form Validation Error States
+   ======================================== */
+.form-control.error,
+.form-select.error {
+    border-color: #c62828;
+    background-color: #fff8f8;
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.1);
+}
+
+.form-control.error:focus,
+.form-select.error:focus {
+    border-color: #c62828;
+    box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.15);
+}
+
+.field-error {
+    display: block;
+    color: #c62828;
+    font-size: 0.8rem;
+    margin-top: 4px;
+    padding-left: 2px;
+    animation: fieldErrorIn 0.3s ease;
+}
+
+[dir="rtl"] .field-error {
+    padding-left: 0;
+    padding-right: 2px;
+}
+
+@keyframes fieldErrorIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
