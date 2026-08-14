@@ -1,4 +1,4 @@
-# AGROFERT — Corporate Website
+# AGROFERT — Corporate Website  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ![AGROFERT](screencapture-agrofert.png)
 
@@ -99,8 +99,11 @@ Possible future enhancements include:
 
 ## 📄 License
 
-This project is a corporate website developed for AGROFERT for Development and Chemical Industrial.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+This project is licensed under the MIT License.
+The MIT License permits use, copying, modification, merging, publishing, distribution, sublicensing, and selling of copies of the software, subject to the terms and conditions of the license.
 
+This project is a corporate website developed for AGROFERT for Development and Chemical Industrial.
 All company-related content, branding, logos, product information, and other proprietary materials remain the property of their respective owners.
 
 ---
